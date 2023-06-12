@@ -64,6 +64,7 @@ public class FavoriteFragment extends Fragment {
         hidden.favoriteDao().getAllMovie().observe(getViewLifecycleOwner(), favoriteMovies ->
                 hidden.favoriteDao().getAllTvShows().observe(getViewLifecycleOwner(), favoriteTvShows -> {
                     adapter = new FavoriteAdapter(favoriteMovies, favoriteTvShows);
+                    adapter.setContext(this.getContext());
                     adapter.notifyDataSetChanged();
                     binding.rvContent.setAdapter(adapter);
 

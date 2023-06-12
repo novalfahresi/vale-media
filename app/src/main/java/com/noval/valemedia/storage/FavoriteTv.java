@@ -17,14 +17,14 @@ public class FavoriteTv implements Parcelable {
     @ColumnInfo(name = "title")
     private String title;
 
+    @ColumnInfo(name = "release_date")
+    private String releaseDate;
+
     @ColumnInfo(name = "poster_path")
     private String posterPath;
 
     @ColumnInfo(name = "backdrop_path")
     private String backdropPath;
-
-    @ColumnInfo(name = "release_date")
-    private String releaseDate;
 
     @ColumnInfo(name = "overview")
     private String overview;
@@ -48,9 +48,9 @@ public class FavoriteTv implements Parcelable {
     protected FavoriteTv(Parcel in) {
         id = in.readInt();
         title = in.readString();
+        releaseDate = in.readString();
         posterPath = in.readString();
         backdropPath = in.readString();
-        releaseDate = in.readString();
         overview = in.readString();
         voteAverage = in.readString();
     }

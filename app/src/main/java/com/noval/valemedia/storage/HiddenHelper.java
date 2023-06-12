@@ -21,8 +21,8 @@ public class HiddenHelper {
     }
 
     @SuppressLint("CheckResult")
-    public boolean insertFavoriteMovie(int id, String title, String posterPath, String backdropPath, String releaseDate, String overview, String voteAverage) {
-        FavoriteMovie favoriteMovie = new FavoriteMovie(id, title, posterPath, backdropPath, releaseDate, overview, voteAverage);
+    public boolean insertFavoriteMovie(int id, String title, String releaseDate, String posterPath, String backdropPath, String overview, String voteAverage) {
+        FavoriteMovie favoriteMovie = new FavoriteMovie(id, title, releaseDate, posterPath, backdropPath, overview, voteAverage);
 
         roomDatabase.favoriteDao().addFavoriteMovie(favoriteMovie).subscribe(() -> {
             status = true;
@@ -47,8 +47,8 @@ public class HiddenHelper {
     }
 
     @SuppressLint("CheckResult")
-    public boolean insertFavoriteTvShow(int id, String title, String posterPath, String backdropPath, String releaseDate, String overview, String voteAverage) {
-        FavoriteTv favoriteTvShow = new FavoriteTv(id, title, posterPath, backdropPath, releaseDate, overview, voteAverage);
+    public boolean insertFavoriteTvShow(int id, String title, String releaseDate,  String posterPath, String backdropPath, String overview, String voteAverage) {
+        FavoriteTv favoriteTvShow = new FavoriteTv(id, title, releaseDate, posterPath, backdropPath, overview, voteAverage);
 
         roomDatabase.favoriteDao().addFavoriteTvShow(favoriteTvShow).subscribe(() -> {
             status = true;

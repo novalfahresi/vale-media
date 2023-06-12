@@ -67,7 +67,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
 
             binding.getRoot().setOnClickListener(v -> {
                 Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra("TV", tv);
+                intent.putExtra("FAV_TV", tv);
                 context.startActivity(intent);
             });
         }
@@ -81,7 +81,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
 
             binding.getRoot().setOnClickListener(v -> {
                 Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra("MOVIE", movie);
+                intent.putExtra("FAV_MOVIE", movie);
                 context.startActivity(intent);
             });
         }

@@ -16,11 +16,11 @@ public class FavoriteMovie implements Parcelable {
     @ColumnInfo(name = "title")
     private String title;
 
-    @ColumnInfo(name = "poster_path")
-    private String posterPath;
-
     @ColumnInfo(name = "release_date")
     private String releaseDate;
+
+    @ColumnInfo(name = "poster_path")
+    private String posterPath;
 
     @ColumnInfo(name = "backdrop_path")
     private String backdropPath;
@@ -30,6 +30,7 @@ public class FavoriteMovie implements Parcelable {
 
     @ColumnInfo(name = "vote_average")
     private String voteAverage;
+
 
     public FavoriteMovie(int id, String title, String releaseDate, String posterPath, String backdropPath, String overview, String voteAverage) {
         this.id = id;
@@ -44,9 +45,9 @@ public class FavoriteMovie implements Parcelable {
     protected FavoriteMovie(Parcel in) {
         id = in.readInt();
         title = in.readString();
+        releaseDate = in.readString();
         posterPath = in.readString();
         backdropPath = in.readString();
-        releaseDate = in.readString();
         overview = in.readString();
         voteAverage = in.readString();
     }

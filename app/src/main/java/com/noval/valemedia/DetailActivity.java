@@ -62,6 +62,7 @@ public class DetailActivity extends AppCompatActivity {
         binding.tvTitle.setText(favoriteTv.getTitle());
         binding.tvOverview.setText(favoriteTv.getOverview());
         binding.tvDate.setText(favoriteTv.getReleaseDate());
+        binding.tvRating.setText(getString(R.string.star)  + favoriteTv.getVoteAverage());
         loadImage(favoriteTv.getPosterPath(), binding.ivPoster);
         loadImage(favoriteTv.getBackdropPath(), binding.ivBackdrop);
 
@@ -78,6 +79,7 @@ public class DetailActivity extends AppCompatActivity {
         binding.tvTitle.setText(favoriteMovie.getTitle());
         binding.tvOverview.setText(favoriteMovie.getOverview());
         binding.tvDate.setText(favoriteMovie.getReleaseDate());
+        binding.tvRating.setText(getString(R.string.star)  + favoriteMovie.getVoteAverage());
         loadImage(favoriteMovie.getPosterPath(), binding.ivPoster);
         loadImage(favoriteMovie.getBackdropPath(), binding.ivBackdrop);
     }
@@ -91,14 +93,24 @@ public class DetailActivity extends AppCompatActivity {
             }
             binding.btnFavorite.setImageResource(R.drawable.round_favorite_border_24);
         } else {
-            hiddenHelper.insertFavoriteMovie(
+            if (isMovie)
+                hiddenHelper.insertFavoriteMovie(
+                    itemID, // id
+                    binding.tvTitle.getText().toString(), // title
+                    binding.tvDate.getText().toString(), // releaseDate
+                    posterPath, backdropPath,
+                    binding.tvOverview.getText().toString(), // overview
+                    binding.tvRating.getText().toString() // voteAverage
+                );
+            else
+                hiddenHelper.insertFavoriteTvShow(
                     itemID,
                     binding.tvTitle.getText().toString(),
                     binding.tvDate.getText().toString(),
                     posterPath, backdropPath,
                     binding.tvOverview.getText().toString(),
                     binding.tvRating.getText().toString()
-            );
+                );
             binding.btnFavorite.setImageResource(R.drawable.round_favorite_24);
         }
     }
