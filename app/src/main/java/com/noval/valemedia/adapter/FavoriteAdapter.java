@@ -42,8 +42,10 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
     public void onBindViewHolder(@NonNull FavoriteAdapter.ViewHolder holder, int position) {
         if (position < movies.size())
             holder.onBindMovie(movies.get(position));
-        else
-            holder.onBindTV(tvs.get(position));
+        else {
+            int tvPosition = position - movies.size();
+            holder.onBindTV(tvs.get(tvPosition));
+        }
     }
 
     @Override
