@@ -9,9 +9,12 @@ import com.bumptech.glide.Glide;
 import com.noval.valemedia.databinding.ActivityDetailBinding;
 import com.noval.valemedia.network.Movie;
 import com.noval.valemedia.network.TV;
+import com.noval.valemedia.storage.FavoriteMovie;
+import com.noval.valemedia.storage.FavoriteTv;
 
 public class DetailActivity extends AppCompatActivity {
     private ActivityDetailBinding binding;
+    private boolean isFavorite = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,16 +24,36 @@ public class DetailActivity extends AppCompatActivity {
         Movie movie = getIntent().getParcelableExtra("MOVIE");
         TV tv = getIntent().getParcelableExtra("TV");
 
+        FavoriteTv favoriteTv = getIntent().getParcelableExtra("FAV_TV");
+        FavoriteMovie favoriteMovie = getIntent().getParcelableExtra("FAV_MOVIE");
+
         binding.btnBack.setOnClickListener(v -> {
             finish();
         });
 
         binding.btnFavorite.setOnClickListener(v -> {
+            toggleFavorite();
             Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
         });
 
+        loadFavoriteMovieIfExist(favoriteMovie);
+        loadFavoriteTvIfExist(favoriteTv);
         loadMovieIfExist(movie);
         loadTVIfExist(tv);
+    }
+
+    private void loadFavoriteTvIfExist(FavoriteTv favoriteTv) {
+        if (favoriteTv == null) return;
+
+    }
+
+    private void loadFavoriteMovieIfExist(FavoriteMovie favoriteMovie) {
+        if (favoriteMovie == null) return;
+
+    }
+
+    private void toggleFavorite() {
+
     }
 
     private void loadMovieIfExist(Movie movie) {
