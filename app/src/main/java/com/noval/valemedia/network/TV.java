@@ -63,7 +63,7 @@ public class TV implements Parcelable {
         }
     };
 
-    public int getApiID() {
+    public int getId() {
         return id;
     }
 

@@ -22,18 +22,33 @@ public class FavoriteMovie implements Parcelable {
     @ColumnInfo(name = "release_date")
     private String releaseDate;
 
-    public FavoriteMovie(int id, String title, String posterPath, String releaseDate) {
+    @ColumnInfo(name = "backdrop_path")
+    private String backdropPath;
+
+    @ColumnInfo(name = "overview")
+    private String overview;
+
+    @ColumnInfo(name = "vote_average")
+    private String voteAverage;
+
+    public FavoriteMovie(int id, String title, String releaseDate, String posterPath, String backdropPath, String overview, String voteAverage) {
         this.id = id;
         this.title = title;
         this.posterPath = posterPath;
+        this.backdropPath = backdropPath;
         this.releaseDate = releaseDate;
+        this.overview = overview;
+        this.voteAverage = voteAverage;
     }
 
     protected FavoriteMovie(Parcel in) {
         id = in.readInt();
         title = in.readString();
         posterPath = in.readString();
+        backdropPath = in.readString();
         releaseDate = in.readString();
+        overview = in.readString();
+        voteAverage = in.readString();
     }
 
     public static final Creator<FavoriteMovie> CREATOR = new Creator<FavoriteMovie>() {
@@ -50,6 +65,14 @@ public class FavoriteMovie implements Parcelable {
 
     public int getId() {
         return id;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
+    public void setVoteAverage(String voteAverage) {
+        this.voteAverage = voteAverage;
     }
 
     public void setId(int id) {
@@ -72,6 +95,14 @@ public class FavoriteMovie implements Parcelable {
         this.posterPath = posterPath;
     }
 
+    public String getBackdropPath() {
+        return backdropPath;
+    }
+
+    public void setBackdropPath(String backdropPath) {
+        this.backdropPath = backdropPath;
+    }
+
     public String getReleaseDate() {
         return releaseDate;
     }
@@ -80,6 +111,13 @@ public class FavoriteMovie implements Parcelable {
         this.releaseDate = releaseDate;
     }
 
+    public String getOverview() {
+        return overview;
+    }
+
+    public String getVoteAverage() {
+        return voteAverage;
+    }
 
     @Override
     public int describeContents() {
@@ -90,7 +128,10 @@ public class FavoriteMovie implements Parcelable {
     public void writeToParcel(@NonNull Parcel parcel, int i) {
         parcel.writeInt(id);
         parcel.writeString(title);
-        parcel.writeString(posterPath);
         parcel.writeString(releaseDate);
+        parcel.writeString(posterPath);
+        parcel.writeString(backdropPath);
+        parcel.writeString(overview);
+        parcel.writeString(voteAverage);
     }
 }

@@ -52,7 +52,7 @@ public class Movie implements Parcelable {
         }
     };
 
-    public int getApiID() {
+    public int getId() {
         return id;
     }
 
