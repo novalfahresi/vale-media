@@ -38,7 +38,7 @@ public class DetailActivity extends AppCompatActivity {
         binding.tvTitle.setText(movie.getTitle());
         binding.tvOverview.setText(movie.getOverview());
         binding.tvDate.setText(movie.getReleaseDate());
-        binding.tvRating.setText("★"  + movie.getVoteAverage());
+        binding.tvRating.setText(getString(R.string.star)  + movie.getVoteAverage());
         Glide.with(this)
                 .load("https://image.tmdb.org/t/p/w500" + movie.getPosterPath())
                 .into(binding.ivPoster);
@@ -52,7 +52,7 @@ public class DetailActivity extends AppCompatActivity {
         binding.tvTitle.setText(tv.getName());
         binding.tvOverview.setText(tv.getOverview());
         binding.tvDate.setText(tv.getFirstAirDate());
-        binding.tvRating.setText("★"  + tv.getVoteAverage());
+        binding.tvRating.setText(getString(R.string.star)  + tv.getVoteAverage());
         Glide.with(this)
                 .load("https://image.tmdb.org/t/p/w500" + tv.getPosterPath())
                 .into(binding.ivPoster);

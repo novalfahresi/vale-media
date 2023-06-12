@@ -1,11 +1,15 @@
 package com.noval.valemedia.storage;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "favorite_tv_show_table")
-public class FavoriteTv {
+public class FavoriteTv implements Parcelable {
 
     @PrimaryKey
     private int id;
@@ -28,6 +32,25 @@ public class FavoriteTv {
         this.posterPath = posterPath;
         this.releaseDate = releaseDate;
     }
+
+    protected FavoriteTv(Parcel in) {
+        id = in.readInt();
+        title = in.readString();
+        posterPath = in.readString();
+        releaseDate = in.readString();
+    }
+
+    public static final Creator<FavoriteTv> CREATOR = new Creator<FavoriteTv>() {
+        @Override
+        public FavoriteTv createFromParcel(Parcel in) {
+            return new FavoriteTv(in);
+        }
+
+        @Override
+        public FavoriteTv[] newArray(int size) {
+            return new FavoriteTv[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -59,6 +82,19 @@ public class FavoriteTv {
 
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(title);
+        parcel.writeString(posterPath);
+        parcel.writeString(releaseDate);
     }
 }
 
